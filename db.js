@@ -9,8 +9,7 @@ const db = new sqlite3.Database("library.db", (err) => {
     }
 })
 
-db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN THE SERIALIZED ORDER
-db.serialize(() => {
+db.serialize(() =>{
     ///Librarian table
     db.run(
         `create TABLE if not exists LIBRARIANS(
