@@ -9,94 +9,94 @@ const db = new sqlite3.Database("library.db", (err) => {
     }
 })
 
-//db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN THE SERIALIZED ORDER
-// db.serialize(() => {
-//     ///Librarian table
-//     db.run(
-//         `create TABLE if not exists LIBRARIANS(
-//         ID INTEGER PRIMARY KEY AUTOINCREMENT,
-//         NAME TEXT,
-//         EMAIL VARCHAR(50),
-//         PASSWORD VARCHAR(50)
-//     )`, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("Table created successfully");
-//         }
-//     }
-//     )
+db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN THE SERIALIZED ORDER
+db.serialize(() => {
+    ///Librarian table
+    db.run(
+        `create TABLE if not exists LIBRARIANS(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        NAME TEXT,
+        EMAIL VARCHAR(50),
+        PASSWORD VARCHAR(50)
+    )`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table created successfully");
+        }
+    }
+    )
 
-//     //Student table
-//     db.run(
-//         `create TABLE if not exists STUDENT(
-//         USN VARCHAR(10) PRIMARY KEY,
-//         NAME TEXT,
-//         BRANCH TEXT
-//     )`, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("Table created successfully");
-//         }
-//     }
-//     )
+    //Student table
+    db.run(
+        `create TABLE if not exists STUDENT(
+        USN VARCHAR(10) PRIMARY KEY,
+        NAME TEXT,
+        BRANCH TEXT
+    )`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table created successfully");
+        }
+    }
+    )
 
-//  //   Books table
-//     db.run(
-//         `create TABLE if not exists BOOKS(
-//         BOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
-//         TITLE TEXT,
-//         AUTHOR VARCHAR(50),
-//         QUANTITY INTEGER
-//     )`, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("Table created successfully");
-//         }
-//     }
-//     ) 
+ //   Books table
+    db.run(
+        `create TABLE if not exists BOOKS(
+        BOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
+        TITLE TEXT,
+        AUTHOR VARCHAR(50),
+        QUANTITY INTEGER
+    )`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table created successfully");
+        }
+    }
+    ) 
 
-//    // Borrowed Books
-//     db.run(
-//         `create TABLE if not exists BORROWEDBOOKS(
-//         BBOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
-//         USN VARCHAR(10),
-//         BOOKID INTEGER,
-//         BORROW_DATE INTEGER,
-//         RETURN_DATE INTEGER,
-//         STATUS VARCHAR(20)
-//     )`, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("Table created successfully");
-//         }
-//     }
-//     )
-//     // libraryvisits
-//     db.run(
-//         `create TABLE if not exists LIBRARYVISITS(
-//         BBOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
-//         USN VARCHAR(10),
-//         ENTRY_TIME INTEGER,
-//         EXIT_TIME INTEGER,
-//         DURATION INTEGER
-//     )`, (err) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             console.log("Table created successfully");
-//         }
-//     }
-//     )
-// })
+   // Borrowed Books
+    db.run(
+        `create TABLE if not exists BORROWEDBOOKS(
+        BBOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
+        USN VARCHAR(10),
+        BOOKID INTEGER,
+        BORROW_DATE INTEGER,
+        RETURN_DATE INTEGER,
+        STATUS VARCHAR(20)
+    )`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table created successfully");
+        }
+    }
+    )
+    // libraryvisits
+    db.run(
+        `create TABLE if not exists LIBRARYVISITS(
+        BBOOKID INTEGER PRIMARY KEY AUTOINCREMENT,
+        USN VARCHAR(10),
+        ENTRY_TIME INTEGER,
+        EXIT_TIME INTEGER,
+        DURATION INTEGER
+    )`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log("Table created successfully");
+        }
+    }
+    )
+})
 // // db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN SERIALIZED ORDER
 db.serialize(() => {
 db.run(`INSERT OR IGNORE INTO LIBRARIANS(NAME,EMAIL,PASSWORD) VALUES
