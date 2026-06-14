@@ -97,7 +97,7 @@ db.serialize(() => {
     }
     )
 
-// // db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN SERIALIZED ORDER
+// db.serialize(FUNCTIONS) THIS WILL RUN THE CODE IN SERIALIZED ORDER
 
 db.run(`INSERT OR IGNORE INTO LIBRARIANS(NAME,EMAIL,PASSWORD) VALUES
     ('Rajesh Kumar','rajesh@library.com','admin123'),
