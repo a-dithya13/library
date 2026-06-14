@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="register">
+        <h1>Edit Book</h1>
+        <form action="/books/edit/<%= book.BOOKID %>" method="post">
+            <input type="text" name="title" value="<%= book.TITLE %>" placeholder="Enter book Title" required>
+             <input type="text" name="author" value="<%= book.AUTHOR %>" placeholder="Enter book AUTHOR" required>
+            <input type="text" name="quantity" value="<%= book.QUANTITY %>" placeholder="Enter book QUANTITY" required>
+            <button>
+                Update
+            </button>
+        </form>
+    <a href="/books">Back to Books</a>
+    </div>
+</body>
+</html>

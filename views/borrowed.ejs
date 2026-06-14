@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="main-page">
+        <div class="table-container">
+            <h1>Borrowed Books</h1>
+            <table style="margin-bottom:30px;">
+                <tr>
+                    <th>ID</th>
+                    <th>USN</th>
+                    <th>Book ID</th>
+                    <th>Borrow Date</th>
+                    <th>Return By</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <% borrowed.forEach(b=> {
+                    const isOverdue = b.STATUS === 'BORROWED' && new Date(b.RETURN_DATE) < new Date(); %>
+                        <tr style="<%= isOverdue ? 'background:#ffe5e5;' : '' %>">
+                            <td>
+                                <%= b.BBOOKID %>
+                            </td>
+                            <td>
+                                <%= b.USN %>
+                            </td>
+                            <td>
+                                <%= b.BOOKID %>
+                            </td>
+                            <td>
+                                <%= b.BORROW_DATE %>
+                            </td>
+                            <td style="color:<%= isOverdue ? 'red' : 'inherit' %>">
+                                <%= b.RETURN_DATE %>
+                                    <%= isOverdue ? '⚠️' : '' %>
+                            </td>
+                            <td>
+                                <%= b.STATUS %>
+                            </td>
+                            <td>
+                                <% if(b.STATUS==='BORROWED' ) { %>
+                                    <a href="/borrowed/return/<%= b.BBOOKID %>">Mark Returned</a>
+                                    <% } else { %>
+                                        <span style="color:green;">Done</span>
+                                        <% } %>
+                            </td>
+                        </tr>
+                        <% }) %>
+            </table>
+
+            <h2>Issue a Book</h2>
+            <form action="/borrowed/add" method="post" class="form-row">
+                <select name="usn">
+                    <% students.forEach(s=> { %>
+                        <option value="<%= s.USN %>">
+                            <%= s.NAME %> (<%= s.USN %>)
+                        </option>
+                        <% }) %>
+                </select>
+                <select name="bookid">
+                    <% books.forEach(book=> { %>
+                        <option value="<%= book.BOOKID %>">
+                            <%= book.TITLE %>
+                        </option>
+                        <% }) %>
+                </select>
+                <button>Issue Book</button>
+            </form>
+
+            <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+
+</html>
