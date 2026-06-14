@@ -68,7 +68,7 @@ app.get(`/books`, (request, response) => {
 })
 
 app.get('/books/add', (request, response) => {
-    response.render("addBook");
+    response.render("addbook");
 })
 
 app.post('/books/add', (request, response) => {

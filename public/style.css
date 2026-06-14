@@ -264,6 +264,12 @@ tr:hover{
     border: 1px solid #4A3F6B;
     margin-top: 20px;
 }
+.table-container table a {
+    border: none !important;
+    padding: 4px 8px !important;
+    margin: 2px !important;
+    display: inline-block;
+}
 .table-container a:hover{
     background-color: #4A3F6B;
     color: #F3EEFF;
